@@ -23,8 +23,8 @@ const AuthForm = () => {
    useEffect(() => {
       if (session?.status === 'authenticated') {
          // редирект, если авторизован
-         // router.push('/conversations');
-         router.push('/users');
+         router.push('/conversations');
+         // router.push('/users');
       }
    }, [session?.status, router]);
 
@@ -69,8 +69,8 @@ const AuthForm = () => {
 
                if (callback?.ok && !callback?.error) {
                   toast.success('Успешная регистрация');
-                  // router.push('/conversations');
-                  router.push('/users');
+                  router.push('/conversations');
+                  // router.push('/users');
                }
             })
             .catch(() => toast.error('Что-то пошло не так!'))
@@ -90,8 +90,8 @@ const AuthForm = () => {
 
                if (callback?.ok && !callback?.error) {
                   toast.success('Успешный вход');
-                  // router.push('/conversations');
-                  router.push('/users');
+                  router.push('/conversations');
+                  // router.push('/users');
                }
             })
             .finally(() => setIsLoading(false));
@@ -109,8 +109,8 @@ const AuthForm = () => {
 
             if (callback?.ok && !callback?.error) {
                toast.success('Успешный вход');
-               // router.push('/conversations');
-               router.push('/users');
+               router.push('/conversations');
+               // router.push('/users');
             }
          })
          .finally(() => setIsLoading(false));

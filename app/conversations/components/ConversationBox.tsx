@@ -27,7 +27,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
 
    const handleClick = useCallback(() => {
       router.push(`/conversations/${data.id}`);
-   }, [data, router]);
+   }, [data.id, router]);
 
    const lastMessage = useMemo(() => {
       const messages = data.messages || [];
@@ -56,14 +56,14 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
 
    const lastMessageText = useMemo(() => {
       if (lastMessage?.image) {
-         return 'Sent an image';
+         return 'Изображение';
       }
 
       if (lastMessage?.body) {
          return lastMessage?.body;
       }
 
-      return 'Started a conversation';
+      return 'Начать диалог';
    }, [lastMessage]);
 
    return (
