@@ -11,6 +11,11 @@ import Input from '@/app/components/inputs/Input';
 import AuthSocialButton from './AuthSocialButton';
 import Button from '@/app/components/Button';
 import { toast } from 'react-hot-toast';
+import clsx from 'clsx';
+import { Icons } from '@/app/components/Icons';
+import Label from '@/app/components/inputs/Label';
+import { buttonVariants } from '@/app/components/ui/button';
+import { cn } from '@/app/libs/utils';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -116,71 +121,208 @@ const AuthForm = () => {
          .finally(() => setIsLoading(false));
    };
 
+   const [showPassword, setShowPassword] = useState<boolean>(false);
+   const [isGitHubLoading, setIsGitHubLoading] = useState<boolean>(false);
+   const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
+
+   const toggleShowPassword = () => {
+      setShowPassword((prevState) => !prevState);
+   };
+
    return (
-      <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-         <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
-            <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-               {variant === 'REGISTER' && (
+      <>
+         {/* <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
+            <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
+               <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
+                  {variant === 'REGISTER' && (
+                     <Input
+                        disabled={isLoading}
+                        register={register}
+                        errors={errors}
+                        required
+                        id='name'
+                        label='Имя'
+                        type='text'
+                     />
+                  )}
+
                   <Input
-                     disabled={isLoading}
+                     id='email'
+                     label='Электронная почта'
+                     type='email'
                      register={register}
                      errors={errors}
                      required
-                     id='name'
-                     label='Имя'
-                     type='text'
+                     disabled={isLoading}
                   />
-               )}
-
-               <Input
-                  id='email'
-                  label='Электронная почта'
-                  type='email'
-                  register={register}
-                  errors={errors}
-                  required
-                  disabled={isLoading}
-               />
-               <Input
-                  id='password'
-                  label='Пароль'
-                  type='password'
-                  register={register}
-                  errors={errors}
-                  required
-                  disabled={isLoading}
-               />
-               <div>
-                  <Button disabled={isLoading} fullWidth type='submit'>
-                     {variant === 'LOGIN' ? 'Войти' : 'Зарегистрироваться'}
-                  </Button>
-               </div>
-            </form>
-
-            <div className='mt-6'>
-               <div className='relative'>
-                  <div className='absolute inset-0 flex items-center'>
-                     <div className='w-full border-t border-gray-300' />
+                  <Input
+                     id='password'
+                     label='Пароль'
+                     type='password'
+                     register={register}
+                     errors={errors}
+                     required
+                     disabled={isLoading}
+                  />
+                  <div>
+                     <Button disabled={isLoading} fullWidth type='submit'>
+                        {variant === 'LOGIN' ? 'Войти' : 'Зарегистрироваться'}
+                     </Button>
                   </div>
-                  <div className='relative flex justify-center text-sm'>
-                     <span className='bg-white px-2 text-gray-500'>
-                        Или продолжить с
-                     </span>
+               </form>
+
+               <div className='mt-6'>
+                  <div className='relative'>
+                     <div className='absolute inset-0 flex items-center'>
+                        <div className='w-full border-t border-gray-300' />
+                     </div>
+                     <div className='relative flex justify-center text-sm'>
+                        <span className='bg-white px-2 text-gray-500'>
+                           Или продолжить с
+                        </span>
+                     </div>
+                  </div>
+
+                  <div className='mt-6 flex gap-2'>
+                     <AuthSocialButton
+                        icon={BsGithub}
+                        onClick={() => socialAction('github')}
+                     />
+                     <AuthSocialButton
+                        icon={BsGoogle}
+                        onClick={() => socialAction('google')}
+                     />
                   </div>
                </div>
-
-               <div className='mt-6 flex gap-2'>
-                  <AuthSocialButton
-                     icon={BsGithub}
-                     onClick={() => socialAction('github')}
-                  />
-                  <AuthSocialButton
-                     icon={BsGoogle}
-                     onClick={() => socialAction('google')}
-                  />
+               <div className='flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500'>
+                  <div>
+                     {variant === 'LOGIN'
+                        ? 'Нет учетной записи?'
+                        : 'Уже есть аккаунт?'}
+                  </div>
+                  <div
+                     onClick={toggleVariant}
+                     className='underline cursor-pointer'
+                  >
+                     {variant === 'LOGIN' ? 'Зарегистрироваться' : 'Войти'}
+                  </div>
                </div>
             </div>
-            <div className='flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500'>
+         </div> */}
+         <div className={clsx('grid gap-6')}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+               <div className='grid gap-2'>
+                  <div className='grid gap-1'>
+                     {variant === 'REGISTER' && (
+                        <>
+                           <Label id='name' label='Имя' />
+                           <Input
+                              id='name'
+                              type='text'
+                              placeholder='Введите ваше имя'
+                              register={register}
+                              errors={errors}
+                              required
+                              disabled={
+                                 isLoading || isGitHubLoading || isGoogleLoading
+                              }
+                           />
+                        </>
+                     )}
+                  </div>
+                  <div className='grid gap-1'>
+                     <Label id='email' label='Электронная почта' />
+                     <Input
+                        id='email'
+                        type='email'
+                        placeholder='name@example.com'
+                        register={register}
+                        errors={errors}
+                        required
+                        disabled={
+                           isLoading || isGitHubLoading || isGoogleLoading
+                        }
+                     />
+                  </div>
+                  <div className='grid gap-1'>
+                     <Label id='password' label='Пароль' />
+                     <div className='relative'>
+                        <Input
+                           id='password'
+                           type={showPassword ? 'text' : 'password'}
+                           register={register}
+                           errors={errors}
+                           required
+                           disabled={
+                              isLoading || isGitHubLoading || isGoogleLoading
+                           }
+                        />
+                        <button
+                           className='absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5'
+                           type='button'
+                           onClick={toggleShowPassword}
+                        >
+                           {showPassword ? <Icons.eyeOff /> : <Icons.eye />}
+                        </button>
+                     </div>
+                  </div>
+                  <button
+                     type='submit'
+                     className={cn(buttonVariants())}
+                     disabled={isLoading}
+                  >
+                     {isLoading && !isGitHubLoading && !isGoogleLoading && (
+                        <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+                     )}
+                     {variant === 'LOGIN' ? 'Войти' : 'Зарегистрироваться'}
+                  </button>
+               </div>
+            </form>
+            <div className='relative'>
+               <div className='absolute inset-0 flex items-center'>
+                  <span className='w-full border-t border-slate-300' />
+               </div>
+               <div className='relative flex justify-center text-xs uppercase'>
+                  <span className='bg-white px-2 text-slate-600'>
+                     Или продолжить с
+                  </span>
+               </div>
+            </div>
+            <div className='mt-3 flex gap-2'>
+               <button
+                  type='button'
+                  className={cn(buttonVariants({ variant: 'outlineAuth' }))}
+                  onClick={() => {
+                     setIsGitHubLoading(true);
+                     socialAction('github');
+                  }}
+                  disabled={isLoading || isGitHubLoading || isGoogleLoading}
+               >
+                  {isGitHubLoading ? (
+                     <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+                  ) : (
+                     <Icons.gitHub className='mr-2 h-4 w-4' />
+                  )}{' '}
+                  Github
+               </button>
+               <button
+                  type='button'
+                  className={cn(buttonVariants({ variant: 'outlineAuth' }))}
+                  onClick={() => {
+                     setIsGoogleLoading(true);
+                     socialAction('google');
+                  }}
+                  disabled={isLoading || isGitHubLoading || isGoogleLoading}
+               >
+                  {isGoogleLoading ? (
+                     <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+                  ) : (
+                     <Icons.gitHub className='mr-2 h-4 w-4' />
+                  )}{' '}
+                  Google
+               </button>
+            </div>
+            <div className='flex gap-2 justify-center text-sm px-2 text-gray-500'>
                <div>
                   {variant === 'LOGIN'
                      ? 'Нет учетной записи?'
@@ -194,7 +336,7 @@ const AuthForm = () => {
                </div>
             </div>
          </div>
-      </div>
+      </>
    );
 };
 
