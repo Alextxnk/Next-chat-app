@@ -11,6 +11,7 @@ import Select from '../inputs/Select';
 import Modal from './Modal';
 import Button from '../Button';
 import { toast } from 'react-hot-toast';
+import Label from '../inputs/Label';
 
 interface GroupChatModalProps {
    isOpen?: boolean;
@@ -78,9 +79,10 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
                         required
                         register={register}
                      />
+                     <Label id='members' label='Собеседники' />
                      <Select
                         disabled={isLoading}
-                        label='Собеседники'
+                        isMulti={true}
                         placeholder='Выберите собеседников'
                         options={users.map((user) => ({
                            value: user.id,

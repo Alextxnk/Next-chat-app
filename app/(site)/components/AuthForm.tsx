@@ -16,6 +16,7 @@ import { Icons } from '@/app/components/Icons';
 import Label from '@/app/components/inputs/Label';
 import { buttonVariants } from '@/app/components/ui/button';
 import { cn } from '@/app/libs/utils';
+import Select from '@/app/components/inputs/Select';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -45,14 +46,19 @@ const AuthForm = () => {
       // экспортируются из useForm<FieldValues>
       register,
       handleSubmit,
+      setValue,
+      watch,
       formState: { errors }
    } = useForm<FieldValues>({
       defaultValues: {
          name: '',
          email: '',
+         appointment: '',
          password: ''
       }
    });
+
+   const appointment = watch('appointment');
 
    const onSubmit: SubmitHandler<FieldValues> = (data) => {
       setIsLoading(true);
@@ -131,85 +137,35 @@ const AuthForm = () => {
 
    return (
       <>
-         {/* <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-            <div className='bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
-               <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
-                  {variant === 'REGISTER' && (
-                     <Input
-                        disabled={isLoading}
-                        register={register}
-                        errors={errors}
-                        required
-                        id='name'
-                        label='Имя'
-                        type='text'
-                     />
-                  )}
-
-                  <Input
-                     id='email'
-                     label='Электронная почта'
-                     type='email'
-                     register={register}
-                     errors={errors}
-                     required
-                     disabled={isLoading}
-                  />
-                  <Input
-                     id='password'
-                     label='Пароль'
-                     type='password'
-                     register={register}
-                     errors={errors}
-                     required
-                     disabled={isLoading}
-                  />
-                  <div>
-                     <Button disabled={isLoading} fullWidth type='submit'>
-                        {variant === 'LOGIN' ? 'Войти' : 'Зарегистрироваться'}
-                     </Button>
-                  </div>
-               </form>
-
-               <div className='mt-6'>
-                  <div className='relative'>
-                     <div className='absolute inset-0 flex items-center'>
-                        <div className='w-full border-t border-gray-300' />
-                     </div>
-                     <div className='relative flex justify-center text-sm'>
-                        <span className='bg-white px-2 text-gray-500'>
-                           Или продолжить с
-                        </span>
-                     </div>
-                  </div>
-
-                  <div className='mt-6 flex gap-2'>
-                     <AuthSocialButton
-                        icon={BsGithub}
-                        onClick={() => socialAction('github')}
-                     />
-                     <AuthSocialButton
-                        icon={BsGoogle}
-                        onClick={() => socialAction('google')}
-                     />
-                  </div>
-               </div>
-               <div className='flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500'>
-                  <div>
-                     {variant === 'LOGIN'
-                        ? 'Нет учетной записи?'
-                        : 'Уже есть аккаунт?'}
-                  </div>
-                  <div
-                     onClick={toggleVariant}
-                     className='underline cursor-pointer'
-                  >
-                     {variant === 'LOGIN' ? 'Зарегистрироваться' : 'Войти'}
-                  </div>
-               </div>
-            </div>
-         </div> */}
-         <div className={clsx('grid gap-6')}>
+         <div className='flex flex-col space-y-2 text-center'>
+            <Icons.student className='mx-auto h-6 w-6' />
+            <h1 className='text-2xl font-semibold tracking-tight'>
+               Student&apos;s Dashboard
+            </h1>
+            {variant === 'LOGIN' && (
+               <>
+                  {/* <h1 className='text-xl font-semibold tracking-tight'>
+                     С возвращением
+                  </h1> */}
+                  <p className='text-sm text-slate-500 dark:text-slate-400'>
+                     Введите свой адрес электронной почты и пароль, чтобы войти
+                     в учетную запись
+                  </p>
+               </>
+            )}
+            {variant === 'REGISTER' && (
+               <>
+                  {/* <h1 className='text-xl font-semibold tracking-tight'>
+                     Создать учетную запись
+                  </h1> */}
+                  <p className='text-sm text-slate-500 dark:text-slate-400'>
+                     Введите свой адрес электронной почты, пароль и выберите
+                     должность ниже, чтобы создать учетную запись
+                  </p>
+               </>
+            )}
+         </div>
+         <div className={clsx('grid gap-5')}>
             <form onSubmit={handleSubmit(onSubmit)}>
                <div className='grid gap-2'>
                   <div className='grid gap-1'>
@@ -243,6 +199,32 @@ const AuthForm = () => {
                            isLoading || isGitHubLoading || isGoogleLoading
                         }
                      />
+                  </div>
+                  <div className='grid gap-1'>
+                     {variant === 'REGISTER' && (
+                        <>
+                           <Label id='appointment' label='Должность' />
+                           <Select
+                              disabled={
+                                 isLoading || isGitHubLoading || isGoogleLoading
+                              }
+                              isMulti={false}
+                              placeholder='Выберите должность'
+                              options={['Студент', 'Преподаватель'].map(
+                                 (appointment) => ({
+                                    value: appointment,
+                                    label: appointment
+                                 })
+                              )}
+                              onChange={(value) =>
+                                 setValue('appointment', value, {
+                                    shouldValidate: true
+                                 })
+                              }
+                              value={appointment}
+                           />
+                        </>
+                     )}
                   </div>
                   <div className='grid gap-1'>
                      <Label id='password' label='Пароль' />
@@ -301,7 +283,10 @@ const AuthForm = () => {
                   {isGitHubLoading ? (
                      <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
                   ) : (
-                     <Icons.gitHub className='mr-2 h-4 w-4' />
+                     <>
+                        {/* <Icons.gitHub className='mr-2 h-4 w-4' /> */}
+                        <BsGithub className='mr-2 h-4 w-4' />  
+                     </>
                   )}{' '}
                   Github
                </button>
@@ -317,7 +302,10 @@ const AuthForm = () => {
                   {isGoogleLoading ? (
                      <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
                   ) : (
-                     <Icons.gitHub className='mr-2 h-4 w-4' />
+                     <>
+                        {/* <Icons.gitHub className='mr-2 h-4 w-4' /> */}
+                        <BsGoogle className='mr-2 h-4 w-4' />
+                     </>
                   )}{' '}
                   Google
                </button>
