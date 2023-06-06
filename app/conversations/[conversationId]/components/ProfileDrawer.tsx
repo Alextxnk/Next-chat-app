@@ -42,10 +42,10 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
 
    const statusText = useMemo(() => {
       if (data.isGroup) {
-         return `${data.users.length} members`;
+         return `${data.users.length} участника(ов)`;
       }
 
-      return isActive ? 'Active' : 'Offline';
+      return isActive ? 'В сети' : 'Был(а) недавно';
    }, [data, isActive]);
 
    return (
@@ -91,7 +91,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                              onClick={onClose}
                                           >
                                              <span className='sr-only'>
-                                                Close panel
+                                                Закрыть панель
                                              </span>
                                              <IoClose
                                                 size={24}
@@ -125,7 +125,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                 <IoTrash size={20} />
                                              </div>
                                              <div className='text-sm font-light text-neutral-600'>
-                                                Delete
+                                                Удалить
                                              </div>
                                           </div>
                                        </div>
@@ -160,7 +160,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                    <hr />
                                                    <div>
                                                       <dt className='text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0'>
-                                                         Joined
+                                                         Присоединился
                                                       </dt>
                                                       <dd className='mt-1 text-sm text-gray-900 sm:col-span-2'>
                                                          <time

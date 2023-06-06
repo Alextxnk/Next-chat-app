@@ -37,8 +37,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       }
 
       // Find last message
-      const lastMessage =
-         conversation.messages[conversation.messages.length - 1];
+      const lastMessage = conversation.messages[conversation.messages.length - 1];
 
       if (!lastMessage) {
          return NextResponse.json(conversation);
