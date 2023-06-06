@@ -79,7 +79,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                   <div className='mt-10 flex flex-col gap-y-8'>
                      <Input
                         disabled={isLoading}
-                        label='Имя'
+                        // label='Имя'
                         id='name'
                         errors={errors}
                         required
