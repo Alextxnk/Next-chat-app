@@ -65,8 +65,15 @@ const AuthForm = () => {
 
       if (variant === 'REGISTER') {
          // Axios Register
+         //console.log(data);
+
          axios
-            .post('/api/register', data)
+            .post('/api/register', {
+               email: data.email,
+               // academic_duty: data.academic_duty.value,
+               academic_duty: data.academic_duty.value,
+               password: data.password
+            })
             .then(() =>
                signIn('credentials', {
                   ...data,
@@ -203,7 +210,10 @@ const AuthForm = () => {
                   <div className='grid gap-1'>
                      {variant === 'REGISTER' && (
                         <>
-                           <Label id='academic_duty' label='Академическая должность' />
+                           <Label
+                              id='academic_duty'
+                              label='Академическая должность'
+                           />
                            <Select
                               disabled={
                                  isLoading || isGitHubLoading || isGoogleLoading
@@ -221,7 +231,7 @@ const AuthForm = () => {
                                     shouldValidate: true
                                  })
                               }
-                              value={academic_duty}
+                              value={academic_duty.value}
                            />
                         </>
                      )}
@@ -285,7 +295,7 @@ const AuthForm = () => {
                   ) : (
                      <>
                         {/* <Icons.gitHub className='mr-2 h-4 w-4' /> */}
-                        <BsGithub className='mr-2 h-4 w-4' />  
+                        <BsGithub className='mr-2 h-4 w-4' />
                      </>
                   )}{' '}
                   Github
