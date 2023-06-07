@@ -70,7 +70,6 @@ const AuthForm = () => {
          axios
             .post('/api/register', {
                email: data.email,
-               // academic_duty: data.academic_duty.value,
                academic_duty: data.academic_duty.value,
                password: data.password
             })
@@ -231,7 +230,7 @@ const AuthForm = () => {
                                     shouldValidate: true
                                  })
                               }
-                              value={academic_duty.value}
+                              value={academic_duty}
                            />
                         </>
                      )}
