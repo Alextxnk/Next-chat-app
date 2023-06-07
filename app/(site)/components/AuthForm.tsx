@@ -51,14 +51,14 @@ const AuthForm = () => {
       formState: { errors }
    } = useForm<FieldValues>({
       defaultValues: {
-         name: '',
+         // name: '',
          email: '',
-         appointment: '',
+         academic_duty: '',
          password: ''
       }
    });
 
-   const appointment = watch('appointment');
+   const academic_duty = watch('academic_duty');
 
    const onSubmit: SubmitHandler<FieldValues> = (data) => {
       setIsLoading(true);
@@ -168,7 +168,7 @@ const AuthForm = () => {
          <div className={clsx('grid gap-5')}>
             <form onSubmit={handleSubmit(onSubmit)}>
                <div className='grid gap-2'>
-                  <div className='grid gap-1'>
+                  {/* <div className='grid gap-1'>
                      {variant === 'REGISTER' && (
                         <>
                            <Label id='name' label='Имя' />
@@ -185,7 +185,7 @@ const AuthForm = () => {
                            />
                         </>
                      )}
-                  </div>
+                  </div> */}
                   <div className='grid gap-1'>
                      <Label id='email' label='Электронная почта' />
                      <Input
@@ -203,7 +203,7 @@ const AuthForm = () => {
                   <div className='grid gap-1'>
                      {variant === 'REGISTER' && (
                         <>
-                           <Label id='appointment' label='Должность' />
+                           <Label id='academic_duty' label='Академическая должность' />
                            <Select
                               disabled={
                                  isLoading || isGitHubLoading || isGoogleLoading
@@ -211,17 +211,17 @@ const AuthForm = () => {
                               isMulti={false}
                               placeholder='Выберите должность'
                               options={['Студент', 'Преподаватель'].map(
-                                 (appointment) => ({
-                                    value: appointment,
-                                    label: appointment
+                                 (academic_duty) => ({
+                                    value: academic_duty,
+                                    label: academic_duty
                                  })
                               )}
                               onChange={(value) =>
-                                 setValue('appointment', value, {
+                                 setValue('academic_duty', value, {
                                     shouldValidate: true
                                  })
                               }
-                              value={appointment}
+                              value={academic_duty}
                            />
                         </>
                      )}
