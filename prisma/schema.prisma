@@ -37,6 +37,7 @@ model User {
    seenMessages       Message[]       @relation("Seen", fields: [seenMessageIds], references: [id])
    accounts           Account[]
    messages           Message[]
+   Post               Post[]
 }
 
 model Account {
@@ -82,4 +83,16 @@ model Message {
 
    senderId           String          @db.ObjectId
    sender             User            @relation(fields: [senderId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
+   authorId           String          @db.ObjectId
+   title              String
+   content            Json?
+   published          Boolean         @default(false)
+   createdAt          DateTime        @default(now())
+   updatedAt          DateTime        @updatedAt
+
+   author             User            @relation(fields: [authorId], references: [id])
 }

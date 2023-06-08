@@ -17,7 +17,10 @@ interface RootLayoutProps {
 }
 
 export const metadata = {
-   title: `Student's Dashboard`,
+   title: {
+      default: `Student's Dashboard`,
+      template: `%s | Student's Dashboard`
+   },
    description:
       'Веб-приложение для удобного взаимодействия и обмена информацией между студентами и преподавателями',
    themeColor: [

@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 import { Icons } from '@/app/components/Icons';
 import Label from '@/app/components/inputs/Label';
-import { buttonVariants } from '@/app/components/ui/button';
+import { buttonVariants } from '@/app/components/ui/Button';
 import { cn } from '@/app/libs/utils';
 import Select from '@/app/components/inputs/Select';
 
@@ -29,7 +29,8 @@ const AuthForm = () => {
    useEffect(() => {
       if (session?.status === 'authenticated') {
          // редирект, если авторизован
-         router.push('/conversations');
+         router.push('/dashboard');
+         // router.push('/conversations');
          // router.push('/users');
       }
    }, [session?.status, router]);
@@ -51,7 +52,7 @@ const AuthForm = () => {
       formState: { errors }
    } = useForm<FieldValues>({
       defaultValues: {
-         // name: '',
+         name: '',
          email: '',
          academic_duty: '',
          password: ''
@@ -69,6 +70,7 @@ const AuthForm = () => {
 
          axios
             .post('/api/register', {
+               name: data.name,
                email: data.email,
                academic_duty: data.academic_duty.value,
                password: data.password
@@ -86,7 +88,8 @@ const AuthForm = () => {
 
                if (callback?.ok && !callback?.error) {
                   toast.success('Успешная регистрация');
-                  router.push('/conversations');
+                  router.push('/dashboard');
+                  // router.push('/conversations');
                   // router.push('/users');
                }
             })
@@ -107,7 +110,8 @@ const AuthForm = () => {
 
                if (callback?.ok && !callback?.error) {
                   toast.success('Успешный вход');
-                  router.push('/conversations');
+                  router.push('/dashboard');
+                  // router.push('/conversations');
                   // router.push('/users');
                }
             })
@@ -126,7 +130,8 @@ const AuthForm = () => {
 
             if (callback?.ok && !callback?.error) {
                toast.success('Успешный вход');
-               router.push('/conversations');
+               router.push('/dashboard');
+               // router.push('/conversations');
                // router.push('/users');
             }
          })
@@ -165,7 +170,7 @@ const AuthForm = () => {
                      Создать учетную запись
                   </h1> */}
                   <p className='text-sm text-slate-500 dark:text-slate-400'>
-                     Введите свой адрес электронной почты, пароль и выберите
+                     Введите имя, адрес электронной почты, пароль и выберите
                      должность ниже, чтобы создать учетную запись
                   </p>
                </>
@@ -174,7 +179,7 @@ const AuthForm = () => {
          <div className={clsx('grid gap-5')}>
             <form onSubmit={handleSubmit(onSubmit)}>
                <div className='grid gap-2'>
-                  {/* <div className='grid gap-1'>
+                  <div className='grid gap-1'>
                      {variant === 'REGISTER' && (
                         <>
                            <Label id='name' label='Имя' />
@@ -191,7 +196,7 @@ const AuthForm = () => {
                            />
                         </>
                      )}
-                  </div> */}
+                  </div>
                   <div className='grid gap-1'>
                      <Label id='email' label='Электронная почта' />
                      <Input
