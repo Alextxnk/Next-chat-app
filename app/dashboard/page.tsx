@@ -13,7 +13,7 @@ import { DashboardHeader } from '@/app/components/DashboardHeader';
 import { PostCreateButton } from '@/app/components/PostCreateButton';
 import { PostItem } from '@/app/components/PostItem';
 import { DashboardShell } from '@/app/components/DashboardShell';
-import { buttonVariants } from '@/app/components/ui/button';
+import { buttonVariants } from '@/app/components/ui/Button';
 
 export const metadata = {
    title: 'Главная'

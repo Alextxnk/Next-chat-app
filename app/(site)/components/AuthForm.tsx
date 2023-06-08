@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 import { Icons } from '@/app/components/Icons';
 import Label from '@/app/components/inputs/Label';
-import { buttonVariants } from '@/app/components/ui/button';
+import { buttonVariants } from '@/app/components/ui/Button';
 import { cn } from '@/app/libs/utils';
 import Select from '@/app/components/inputs/Select';
 
