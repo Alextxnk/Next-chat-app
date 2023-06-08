@@ -33,7 +33,7 @@ const Select: React.FC<SelectProps> = ({
                menuPortal: (base) => ({ ...base, zIndex: 9999 })
             }}
             classNames={{
-               control: () => 'text-base'
+               control: () => 'text-base py-px'
             }}
          />
       </div>
