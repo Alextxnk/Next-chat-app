@@ -4,8 +4,9 @@ import ReactSelect from 'react-select';
 
 interface SelectProps {
    placeholder?: string;
-   value?: Record<string, any>;
-   onChange: (value: Record<string, any>) => void;
+   value: Record<string, any>;
+   onChange: (value: string) => void;
+   // onChange: (value: Record<string, any>) => void;
    options: Record<string, any>[];
    disabled?: boolean;
    isMulti: boolean;
