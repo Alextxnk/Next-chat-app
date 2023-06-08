@@ -9,12 +9,12 @@ import { useRouter } from 'next/navigation';
 
 import Input from '@/app/components/inputs/Input';
 import AuthSocialButton from './AuthSocialButton';
-import Button from '@/app/components/Button';
+// import Button from '@/app/components/Button';
 import { toast } from 'react-hot-toast';
 import clsx from 'clsx';
 import { Icons } from '@/app/components/Icons';
 import Label from '@/app/components/inputs/Label';
-import { buttonVariants } from '@/app/components/ui/Button';
+import { buttonVariants } from '@/app/components/ui/button';
 import { cn } from '@/app/libs/utils';
 import Select from '@/app/components/inputs/Select';
 

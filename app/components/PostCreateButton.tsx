@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import { cn } from '@/app/libs/utils';
 
 import { Icons } from '@/app/components/Icons';
-import { buttonVariants } from '@/app/components/ui/Button';
+import { buttonVariants } from '@/app/components/ui/button';
 
 interface PostCreateButtonProps
    extends React.HTMLAttributes<HTMLButtonElement> {}
