@@ -29,11 +29,11 @@ export type SidebarNavItem = {
    | {
       href: string;
       items?: never;
-      }
+   }
    | {
       href?: string;
       items: NavLink[];
-      }
+   }
 );
 
 export type SiteConfig = {
@@ -42,7 +42,7 @@ export type SiteConfig = {
    url: string;
    ogImage: string;
    links: {
-      telegram: string;
+      twitter: string;
       github: string;
    };
 };
@@ -60,4 +60,3 @@ export type DashboardConfig = {
    mainNav: MainNavItem[];
    sidebarNav: SidebarNavItem[];
 };
-
