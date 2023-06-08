@@ -5,9 +5,9 @@ import clsx from 'clsx';
 import useConversation from '../hooks/useConversation';
 import EmptyState from '../components/EmptyState';
 
-export const metadata = {
+/* export const metadata = {
    title: 'Сообщения'
-};
+}; */
 
 const Home = () => {
    const { isOpen } = useConversation();
