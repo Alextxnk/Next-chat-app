@@ -36,10 +36,13 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
                <div className='focus:outline-none'>
                   <span className='absolute inset-0' aria-hidden='true' />
                   <div className='flex justify-between items-center mb-1'>
-                     <p className='text-sm font-medium text-gray-900'>
+                     <p className='text-md font-medium text-gray-900'>
                         {data.name}
                      </p>
                   </div>
+                  <p className='text-sm font-medium text-gray-900'>
+                        Группа ВПР 41
+                     </p>
                </div>
             </div>
          </div>
