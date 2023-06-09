@@ -7,8 +7,8 @@ import { DashboardShell } from '@/app/components/DashboardShell';
 import { UserNameForm } from '@/app/components/UserNameForm';
 
 export const metadata = {
-   title: 'Настройки',
-   description: 'Управление настройками учетной записи и веб-сайта'
+   title: 'Настройки профиля',
+   description: 'Заполните недостающую информацию о себе'
 };
 
 export default async function SettingsPage() {

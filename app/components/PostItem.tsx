@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Post } from '@prisma/client';
+import { Post, User } from '@prisma/client';
 
 import { formatDate } from '@/app/libs/utils';
 import { PostOperations } from '@/app/components/PostOperations';
@@ -7,9 +7,12 @@ import { Skeleton } from '@/app/components/ui/Skeleton';
 
 interface PostItemProps {
    post: Pick<Post, 'id' | 'title' | 'published' | 'createdAt'>;
+   // user: Pick<User, 'id' | 'name' | 'surname' | 'group'>;
 }
 
 export function PostItem({ post }: PostItemProps) {
+   // const author = `Автор статьи:${user.surname ? user.surname : 'Фамилия'}`;
+
    return (
       <div className='flex items-center justify-between p-4'>
          <div className='grid gap-1'>
@@ -19,8 +22,15 @@ export function PostItem({ post }: PostItemProps) {
             >
                {post.title}
             </Link>
+            <p>
+               Автор статьи: Фамилия Имя Группа
+            </p>
+            <p className='text-sm text-slate-600'>
+               Статус: {post.published ? 'Опубликована' : 'В разработке'}
+            </p>
             <div>
                <p className='text-sm text-slate-600'>
+                  Последнее изменение:{' '}
                   {formatDate(post.createdAt?.toDateString())}
                </p>
             </div>

@@ -13,11 +13,11 @@ export const dashboardConfig: DashboardConfig = {
       {
          title: 'Пользователи',
          href: '/dashboard/users'
-      },
-      {
+      }
+      /* {
          title: 'ДЗ',
          href: '/dashboard/homework'
-      }
+      } */
       /* {
       title: "Support",
       href: "/support",
@@ -36,7 +36,7 @@ export const dashboardConfig: DashboardConfig = {
          icon: 'billing'
       },
       {
-         title: 'Настройки',
+         title: 'Настройки профиля',
          href: '/dashboard/settings',
          icon: 'settings'
       }

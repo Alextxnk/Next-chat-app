@@ -138,7 +138,7 @@ export function Editor({ post }: EditorProps) {
                      </>
                   </Link>
                   <p className='text-sm text-slate-600'>
-                     {post.published ? 'Опубликованна' : 'Проект'}
+                     {post.published ? 'Опубликована' : 'В разработке'}
                   </p>
                </div>
                <button type='submit' className={cn(buttonVariants())}>
