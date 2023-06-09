@@ -7,8 +7,9 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { absoluteUrl, formatDate } from '@/app/libs/utils';
+import { absoluteUrl, formatDate, cn } from '@/app/libs/utils';
 import { Icons } from '@/app/components/Icons';
+import { buttonVariants } from '@/app/components/ui/Button';
 
 interface PostPageProps {
    params: {
@@ -95,10 +96,14 @@ export default async function PostPage({ params }: PostPageProps) {
       <article className='container relative max-w-3xl py-6 lg:py-10'>
          <Link
             href='/dashboard/blog'
-            className='absolute top-14 left-[-200px] hidden items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900 xl:inline-flex'
+            /* className='absolute top-14 left-[-200px] hidden items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900 xl:inline-flex' */
+            className={cn(
+               buttonVariants({ variant: 'ghost' }),
+               'absolute left-[-200px] top-14 hidden xl:inline-flex'
+            )}
          >
             <Icons.chevronLeft className='mr-2 h-4 w-4' />
-            Посмотреть все статьи
+            Все статьи
          </Link>
          <div>
             {post.date && (
@@ -127,7 +132,7 @@ export default async function PostPage({ params }: PostPageProps) {
                               width={42}
                               height={42}
                               className='rounded-full'
-                           /> 
+                           />
                            <div className='flex-1 text-left leading-tight'>
                               <p className='font-medium text-slate-900'>
                                  {author.title}
@@ -157,10 +162,11 @@ export default async function PostPage({ params }: PostPageProps) {
          <div className='flex justify-center py-6 lg:py-10'>
             <Link
                href='/dashboard/blog'
-               className='inline-flex items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900'
+               /* className='inline-flex items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900' */
+               className={cn(buttonVariants({ variant: "ghost" }))}
             >
                <Icons.chevronLeft className='mr-2 h-4 w-4' />
-               Посмотреть все статьи
+               Все статьи
             </Link>
          </div>
       </article>

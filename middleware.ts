@@ -2,11 +2,11 @@ import { getToken } from 'next-auth/jwt';
 import { withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
 
-export default withAuth(
-   /* pages: {
+export default withAuth({
+   pages: {
       signIn: '/'
-   } */
-   async function middleware(req) {
+   }
+   /* async function middleware(req) {
       const token = await getToken({ req });
       const isAuth = !!token;
       const isAuthPage =
@@ -40,11 +40,12 @@ export default withAuth(
             return true;
          }
       }
-   }
-);
+   } */
+});
 
 export const config = {
    matcher: [
+      // '/dashboard/:path*',
       '/blog/:path*',
       '/conversations/:path*',
       '/users/:path*',

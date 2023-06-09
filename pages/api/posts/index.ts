@@ -36,7 +36,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
          return res.json(posts);
       } catch (error) {
-         console.log('Ошибка тут');
          return res.status(500).end();
       }
    }
@@ -61,7 +60,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
          if (error instanceof z.ZodError) {
             return res.status(422).json(error.issues);
          }
-
+         console.log('Ошибка тут');
          return res.status(500).end();
       }
    }
