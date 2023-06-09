@@ -8,15 +8,15 @@ export const dashboardConfig: DashboardConfig = {
       },
       {
          title: 'Сообщения',
-         href: '/conversations'
+         href: '/dashboard/conversations'
       },
       {
          title: 'Пользователи',
-         href: '/users'
+         href: '/dashboard/users'
       },
       {
          title: 'ДЗ',
-         href: '/homework'
+         href: '/dashboard/homework'
       }
       /* {
       title: "Support",

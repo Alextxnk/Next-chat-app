@@ -2,8 +2,8 @@
 
 import clsx from 'clsx';
 
-import useConversation from '../hooks/useConversation';
-import EmptyState from '../components/EmptyState';
+import useConversation from '@/app/hooks/useConversation';
+import EmptyState from '@/app/components/EmptyState';
 
 /* export const metadata = {
    title: 'Сообщения'
