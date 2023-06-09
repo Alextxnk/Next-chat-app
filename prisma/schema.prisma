@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-   id                 String          @id @default(cuid()) @map("_id") @db.ObjectId
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
    name               String?
    surname            String?
    patronymic         String?
@@ -40,11 +40,11 @@ model User {
    Post               Post[]
    sessions           Session[]
 
-   @@map(name: "users")
+   // @@map(name: "users")
 }
 
 model Account {
-   id                 String          @id @default(cuid()) @map("_id") @db.ObjectId
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
    userId             String          @db.ObjectId
    type               String
    provider           String
@@ -59,11 +59,11 @@ model Account {
    user               User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
    @@unique([provider, providerAccountId])
-   @@map(name: "accounts")
+   // @@map(name: "accounts")
 }
 
 model Conversation {
-   id                 String          @id @default(cuid()) @map("_id") @db.ObjectId
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
    createdAt          DateTime        @default(now())
    lastMessageAt      DateTime        @default(now())
    name               String?
@@ -76,7 +76,7 @@ model Conversation {
 }
 
 model Message {
-   id                 String          @id @default(cuid()) @map("_id") @db.ObjectId
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
    body               String?
    image              String?
    createdAt          DateTime        @default(now())
@@ -90,7 +90,7 @@ model Message {
 }
 
 model Post {
-   id                 String          @id @default(cuid()) @map("_id") @db.ObjectId
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
    authorId           String          @db.ObjectId
    title              String
    content            Json?
@@ -100,23 +100,23 @@ model Post {
 
    author             User            @relation(fields: [authorId], references: [id])
 
-   @@map(name: "posts")
+   // @@map(name: "posts")
 }
 
 model Session {
-   id                 String          @id @default(cuid()) @map("_id") @db.ObjectId
+   id                 String          @id @default(auto()) @map("_id") @db.ObjectId
    sessionToken       String          @unique
    userId             String          @db.ObjectId
    expires            DateTime
    user               User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-   @@map(name: "sessions")
+   // @@map(name: "sessions")
 }
 
 model VerificationToken {
-   identifier        String           @id @default(cuid()) @map("_id") @db.ObjectId
+   identifier        String           @id @default(auto()) @map("_id") @db.ObjectId
    token             String           @unique
    expires           DateTime
 
-   @@map(name: "verification_tokens")
+   // @@map(name: "verification_tokens")
 }

@@ -15,11 +15,12 @@ const Home = () => {
    return (
       <div
          className={clsx(
-            'lg:pl-80 h-full lg:block',
+            // 'lg:pl-80 h-full lg:block',
+            'lg:pl-80 lg:block',
             isOpen ? 'block' : 'hidden'
          )}
       >
-         <EmptyState />
+         {/* <EmptyState /> */}
       </div>
    );
 };

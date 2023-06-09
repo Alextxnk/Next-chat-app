@@ -1,7 +1,5 @@
 // 'use client';
 
-// import { signOut } from "next-auth/react";
-
 const EmptyState = () => {
    return (
       <div className='px-4 py-10 sm:px-6 lg:px-8 lg:py-6 h-full flex justify-center items-center bg-gray-100'>
@@ -9,7 +7,6 @@ const EmptyState = () => {
             <h3 className='mt-2 text-2xl font-semibold text-gray-900'>
                Выберите чат или начните новый разговор
             </h3>
-            {/* <button onClick={() => signOut()}>Выйти</button> */}
          </div>
       </div>
    );

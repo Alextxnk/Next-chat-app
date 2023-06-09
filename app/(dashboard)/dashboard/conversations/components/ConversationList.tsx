@@ -88,12 +88,13 @@ const ConversationList: React.FC<ConversationListProps> = ({
          />
          <aside
             className={clsx(
-               `fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200`,
+               //''
+               `fixed inset-y-0 pb-20 lg:pb-0 lg:left-16 lg:w-80 lg:block pr-2 overflow-y-auto border-r border-gray-200`,
                isOpen ? 'hidden' : 'block w-full left-0'
             )}
          >
-            <div className='px-5'>
-               <div className='flex justify-between mb-4 pt-4'>
+            <div className='mt-20'>
+               <div className='flex justify-between my-4 mx-4'>
                   <div className='text-2xl font-bold text-neutral-800'>
                      Сообщения
                   </div>
