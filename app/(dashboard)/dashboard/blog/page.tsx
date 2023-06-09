@@ -56,14 +56,14 @@ export default async function BlogPage() {
                            {formatDate(post.date)}
                         </p>
                      )}
-                     <Link href={post.slug} className='absolute inset-0'>
-                        <span className='sr-only'>View Article</span>
+                     <Link href={'/dashboard' + post.slug} className='absolute inset-0'>
+                        <span className='sr-only'>Просмотреть статью</span>
                      </Link>
                   </article>
                ))}
             </div>
          ) : (
-            <p>No posts published.</p>
+            <p>Нет опубликованных статей</p>
          )}
       </div>
    );

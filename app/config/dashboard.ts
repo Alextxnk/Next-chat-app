@@ -4,7 +4,7 @@ export const dashboardConfig: DashboardConfig = {
    mainNav: [
       {
          title: 'Блог',
-         href: '/blog',
+         href: '/dashboard/blog',
       },
       {
          title: 'Сообщения',

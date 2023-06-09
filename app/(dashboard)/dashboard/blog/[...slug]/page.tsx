@@ -94,7 +94,7 @@ export default async function PostPage({ params }: PostPageProps) {
    return (
       <article className='container relative max-w-3xl py-6 lg:py-10'>
          <Link
-            href='/blog'
+            href='/dashboard/blog'
             className='absolute top-14 left-[-200px] hidden items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900 xl:inline-flex'
          >
             <Icons.chevronLeft className='mr-2 h-4 w-4' />
@@ -156,7 +156,7 @@ export default async function PostPage({ params }: PostPageProps) {
          <hr className='my-4 border-slate-200' />
          <div className='flex justify-center py-6 lg:py-10'>
             <Link
-               href='/blog'
+               href='/dashboard/blog'
                className='inline-flex items-center justify-center text-sm font-medium text-slate-600 hover:text-slate-900'
             >
                <Icons.chevronLeft className='mr-2 h-4 w-4' />
