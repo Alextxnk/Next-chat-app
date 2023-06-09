@@ -1,10 +1,12 @@
+import { withContentlayer } from 'next-contentlayer';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   reactStrictMode: true,
    experimental: {
       appDir: true,
-      swcPlugins: [
-         ['next-superjson-plugin', {}]
-      ]
+      swcPlugins: [['next-superjson-plugin', {}]],
+      serverComponentsExternalPackages: ['@prisma/client']
    },
    images: {
       domains: [
@@ -15,4 +17,4 @@ const nextConfig = {
    }
 };
 
-module.exports = nextConfig;
+export default withContentlayer(nextConfig);

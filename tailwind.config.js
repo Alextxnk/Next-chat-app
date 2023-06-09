@@ -7,7 +7,9 @@ module.exports = {
    content: [
       './pages/**/*.{js,ts,jsx,tsx,mdx}',
       './components/**/*.{js,ts,jsx,tsx,mdx}',
-      './app/**/*.{js,ts,jsx,tsx,mdx}'
+      './app/**/*.{js,ts,jsx,tsx,mdx}',
+      './ui/**/*.{ts,tsx}',
+      './content/**/*.{md,mdx}'
    ],
    darkMode: ['class'],
    theme: {
@@ -27,10 +29,9 @@ module.exports = {
    plugins: [
       require('@tailwindcss/forms')({
          strategy: 'class'
-      })
-      // require('tailwindcss-animate'),
-      // require('@tailwindcss/typography'),
-      // require('@tailwindcss/line-clamp')
+      }),
+      require('tailwindcss-animate'),
+      require('@tailwindcss/typography'),
+      require('@tailwindcss/line-clamp')
    ]
 };
-``

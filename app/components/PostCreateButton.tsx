@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
-// import { toast } from '@/hooks/use-toast';
 import { toast } from 'react-hot-toast';
 
 import { cn } from '@/app/libs/utils';
@@ -42,7 +41,7 @@ export function PostCreateButton({
                description: 'Пожалуйста, перейдите на тарифный план PRO',
                variant: 'destructive'
             }); */
-            toast.error('Достигнуто ограничение в 3 статьи');
+            return toast.error('Достигнуто ограничение в 3 статьи');
          }
 
          /* return toast({
@@ -50,7 +49,7 @@ export function PostCreateButton({
             description: 'Ваш статья не была создана. Пожалуйста, попробуйте снова',
             variant: 'destructive'
          }); */
-         toast.error('Что-то пошло не так');
+         return toast.error('Что-то пошло не так');
       }
 
       const post = await response.json();
