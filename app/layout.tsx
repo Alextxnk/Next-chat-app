@@ -15,7 +15,7 @@ const fontSans = FontSans({
 interface RootLayoutProps {
    children: React.ReactNode;
 }
-
+   
 export const metadata = {
    title: {
       default: `Student's Dashboard`,

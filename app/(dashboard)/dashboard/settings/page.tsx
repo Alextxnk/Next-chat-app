@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import getCurrentUser  from '@/app/actions/getCurrentUser';
+import getCurrentUser from '@/app/actions/getCurrentUser';
 import { DashboardHeader } from '@/app/components/DashboardHeader';
 import { DashboardShell } from '@/app/components/DashboardShell';
 import { UserNameForm } from '@/app/components/UserNameForm';
@@ -22,11 +22,20 @@ export default async function SettingsPage() {
       <DashboardShell>
          <DashboardHeader
             heading='Настройки'
-            text='Управление настройками учетной записи и веб-сайта'
+            text='Управление настройками учетной записи'
          />
          <div className='grid gap-10'>
             {user?.name ? (
-               <UserNameForm user={{ id: user.id, name: user.name }} />
+               <UserNameForm
+                  user={{
+                     id: user.id,
+                     name: user.name,
+                     surname: user.surname,
+                     patronymic: user.patronymic,
+                     faculty: user.faculty,
+                     academic_duty: user.academic_duty
+                  }}
+               />
             ) : null}
          </div>
       </DashboardShell>

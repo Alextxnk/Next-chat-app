@@ -23,7 +23,7 @@ export function PostItem({ post }: PostItemProps) {
                {post.title}
             </Link>
             <p>
-               Автор статьи: Фамилия Имя Группа
+               Автор статьи: Соловьев Алексей группа ВПР41
             </p>
             <p className='text-sm text-slate-600'>
                Статус: {post.published ? 'Опубликована' : 'В разработке'}
