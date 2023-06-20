@@ -33,6 +33,10 @@ export default async function SettingsPage() {
                      surname: user.surname,
                      patronymic: user.patronymic,
                      faculty: user.faculty,
+                     education_stage: user.education_stage,
+                     course: user.course,
+                     department: user.department,
+                     group: user.group,
                      academic_duty: user.academic_duty
                   }}
                />

@@ -77,7 +77,7 @@ export default async function DashboardProfile() {
                      </Label>
                      <h1 className='text  font-bold'>ПОВТиАС</h1>
                   </div>
-                  <div className='grid gap-1 mb-2'>
+                  {/* <div className='grid gap-1 mb-2'>
                      <Label className='ml-1' htmlFor='faculty'>
                         Направление
                      </Label>
@@ -85,7 +85,7 @@ export default async function DashboardProfile() {
                         Программное обеспечение вычислительной техники и
                         автоматизированных систем
                      </h1>
-                  </div>
+                  </div> */}
                   <div className='grid gap-1 mb-2'>
                      <Label className='ml-1' htmlFor='faculty'>
                         Группа
