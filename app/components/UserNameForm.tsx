@@ -80,7 +80,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
    const [isSaving, setIsSaving] = React.useState<boolean>(false);
 
    async function onSubmit(data: FormData) {
-      console.log('Отправка формы');
+      // console.log('Отправка формы');
 
       setIsSaving(true);
 
@@ -94,6 +94,10 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
             surname: data.surname,
             patronymic: data.patronymic,
             faculty: data.faculty,
+            education_stage: data.education_stage,
+            course: data.course,
+            department: data.department,
+            group: data.group,
             academic_duty: data.academic_duty
          })
       });
@@ -104,7 +108,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
          toast.error('Что-то пошло не так');
       }
 
-      toast.success('Ваше имя было обновлено');
+      toast.success('Ваше данные были обновлены');
 
       router.refresh();
    }
@@ -125,7 +129,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
       >
          <Card className='mb-6'>
             <Card.Header>
-               <Card.Title>Ваше персональные данные</Card.Title>
+               <Card.Title>Ваши персональные данные</Card.Title>
                <Card.Description>
                   Пожалуйста, заполните информацию о себе
                </Card.Description>
@@ -242,7 +246,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
                   <Input
                      id='department'
                      type='department'
-                     placeholder='Введите кафедру'
+                     placeholder='ПОВТиАС'
                      register={register}
                      errors={errors}
                      required
@@ -254,7 +258,7 @@ export function UserNameForm({ user, className, ...props }: UserNameFormProps) {
                   <Input
                      id='group'
                      type='group'
-                     placeholder='Введите группу'
+                     placeholder='ВПР41'
                      register={register}
                      errors={errors}
                      required

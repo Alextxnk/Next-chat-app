@@ -51,7 +51,7 @@ const UserAccountNav: React.FC<UserAccountNavProps> = ({ user }) => {
                <Link href='/dashboard/profile'>Профиль</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild className='cursor-pointer'>
-               <Link href='/dashboard/settings'>Настройки</Link>
+               <Link href='/dashboard/settings'>Настройки профиля</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem

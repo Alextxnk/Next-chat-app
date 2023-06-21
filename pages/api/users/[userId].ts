@@ -16,12 +16,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
          const user = session?.user;
 
          if (!user) {
-            throw new Error('User not found.');
+            throw new Error('Пользователь не найден');
          }
 
          const body = req.body;
 
-         if (body?.name) {
+         if (body?.name || body?.surname || body?.patronymic || body?.faculty || body?.education_stage || body?.course || body?.department || body?.group || body?.academic_duty) {
             const payload = userNameSchema.parse(body);
 
             await prisma.user.update({
@@ -29,7 +29,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                   id: user.id
                },
                data: {
-                  name: payload.name
+                  name: payload.name,
+                  surname: payload.surname,
+                  patronymic: payload.patronymic,
+                  faculty: payload.faculty.value,
+                  education_stage: payload.education_stage.value,
+                  course: payload.course.value,
+                  department: payload.department,
+                  group: payload.group,
+                  academic_duty: payload.academic_duty.value
                }
             });
          }

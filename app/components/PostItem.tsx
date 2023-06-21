@@ -5,13 +5,31 @@ import { formatDate } from '@/app/libs/utils';
 import { PostOperations } from '@/app/components/PostOperations';
 import { Skeleton } from '@/app/components/ui/Skeleton';
 
+import getCurrentUser from '@/app/actions/getCurrentUser';
+
 interface PostItemProps {
    post: Pick<Post, 'id' | 'title' | 'published' | 'createdAt'>;
-   // user: Pick<User, 'id' | 'name' | 'surname' | 'group'>;
+   user: Pick<
+      User,
+      | 'id'
+      | 'name'
+      | 'surname'
+      | 'patronymic'
+      | 'faculty'
+      | 'education_stage'
+      | 'course'
+      | 'department'
+      | 'group'
+      | 'academic_duty'
+   >;
 }
 
-export function PostItem({ post }: PostItemProps) {
-   // const author = `Автор статьи:${user.surname ? user.surname : 'Фамилия'}`;
+export function PostItem({ post, user }: PostItemProps) {
+   // const user = getCurrentUser();
+   const surname = user.surname;
+   const name = user.name;
+   const group = user.group;
+   const author = 'Автор статьи: ' + surname + name + group;
 
    return (
       <div className='flex items-center justify-between p-4'>
@@ -22,11 +40,12 @@ export function PostItem({ post }: PostItemProps) {
             >
                {post.title}
             </Link>
-            <p>
-               Автор статьи: Соловьев Алексей группа ВПР41
-            </p>
+            <p>{author}</p>
             <p className='text-sm text-slate-600'>
                Статус: {post.published ? 'Опубликована' : 'В разработке'}
+            </p>
+            <p className='text-sm text-slate-600'>
+               Проверена преподавателем: {post.published ? 'Да' : 'Нет'}
             </p>
             <div>
                <p className='text-sm text-slate-600'>
@@ -35,7 +54,10 @@ export function PostItem({ post }: PostItemProps) {
                </p>
             </div>
          </div>
-         <PostOperations post={{ id: post.id, title: post.title }} />
+         <PostOperations
+            post={{ id: post.id, title: post.title }}
+            /* user={{ academic_duty: user.academic_duty }} */
+         />
          {/* <PostDeleteButton post={{ id: post.id, title: post.title }} /> */}
       </div>
    );

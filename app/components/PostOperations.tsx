@@ -68,8 +68,8 @@ export function PostOperations({ post }: PostOperationsProps) {
                <DropdownMenuSeparator />
                <DropdownMenuItem>Отправить на рецензию</DropdownMenuItem>
                <DropdownMenuSeparator />
-               <DropdownMenuItem>Опубликовать</DropdownMenuItem>
-               <DropdownMenuSeparator />
+               {/* <DropdownMenuItem>Опубликовать</DropdownMenuItem>
+               <DropdownMenuSeparator /> */}
                <DropdownMenuItem
                   className='flex cursor-pointer items-center text-red-600 focus:bg-red-50'
                   onSelect={() => setShowDeleteAlert(true)}

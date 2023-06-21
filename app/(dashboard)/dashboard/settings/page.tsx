@@ -21,7 +21,7 @@ export default async function SettingsPage() {
    return (
       <DashboardShell>
          <DashboardHeader
-            heading='Настройки'
+            heading='Настройки профиля'
             text='Управление настройками учетной записи'
          />
          <div className='grid gap-10'>

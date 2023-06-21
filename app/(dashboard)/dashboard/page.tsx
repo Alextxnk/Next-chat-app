@@ -57,7 +57,7 @@ export default async function DashboardPage() {
             {posts?.length ? (
                <div className='divide-y divide-neutral-200 rounded-md border border-slate-200'>
                   {posts.map((post) => (
-                     <PostItem key={post.id} post={post} />
+                     <PostItem key={post.id} post={post} user={user} />
                   ))}
                </div>
             ) : (
