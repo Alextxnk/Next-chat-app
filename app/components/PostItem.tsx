@@ -29,7 +29,7 @@ export function PostItem({ post, user }: PostItemProps) {
    const surname = user.surname;
    const name = user.name;
    const group = user.group;
-   const author = 'Автор статьи: ' + surname + name + group;
+   const author = 'Автор статьи: ' + surname + ' ' + name + ' ' + group;
 
    return (
       <div className='flex items-center justify-between p-4'>
